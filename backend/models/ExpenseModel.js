@@ -1,7 +1,10 @@
+// Ubah require dari "AccountModel" menjadi "Account"
+const Account = require("../models/accoundModel");
+
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-
-const ExpenseSchema = new mongoose.Schema({
+const ExpenseSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -16,7 +19,7 @@ const ExpenseSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        default:"expense"
+        default: "expense"
     },
     date: {
         type: Date,
@@ -34,6 +37,12 @@ const ExpenseSchema = new mongoose.Schema({
         maxLength: 20,
         trim: true
     },
-}, {timestamps: true})
+    // Menambahkan referensi ke model Account berdasarkan username
+    account: {
+        type: Schema.Types.ObjectId,
+        ref: 'Account',
+        required: true
+    }
+}, { timestamps: true });
 
-module.exports = mongoose.model('Expense', ExpenseSchema)
+module.exports = mongoose.model('Expense', ExpenseSchema);
