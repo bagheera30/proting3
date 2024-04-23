@@ -32,43 +32,63 @@ function Login() {
       console.error(error);
     }
   }
-
+  
   return (
-    <div className="login">
-      <h1>Daftar</h1>
-
-      <form onSubmit={submit}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Nama Pengguna"
-          required
-        />
-        <button type="submit">Daftar</button>
-      </form>
-
-      <br />
-      <p>ATAU</p>
-      <br />
-
-      <Link to="/">Halaman Login</Link>
+    <div className="login-container" style={{  backgroundColor: '#FCF6F9', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="login" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <h1>Daftar</h1>
+  
+        <form onSubmit={submit} style={{ width: '100%', maxWidth: '300px' }}>
+          <div style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column' }}>
+            <label htmlFor="email" style={{ marginBottom: '0.5rem' }}>Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              required
+              style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '0.5rem' }}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column' }}>
+            <label htmlFor="password" style={{ marginBottom: '0.5rem' }}>Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+              style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '0.5rem' }}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column' }}>
+            <label htmlFor="username" style={{ marginBottom: '0.5rem' }}>Nama Pengguna:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Nama Pengguna"
+              required
+              style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '0.5rem' }}
+            />
+          </div>
+          <button type="submit" style={{ width: '100%', border: '1px solid #ccc', borderRadius: '4px', padding: '0.5rem' }}>Daftar</button>
+        </form>
+  
+        <br />
+        <p>ATAU</p>
+        <br />
+  
+        <Link to="/">Halaman Login</Link>
+      </div>
     </div>
   );
+  
+  
+  
 }
 
 export default Login;
