@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import styled from "styled-components";
+import bg from "../img/bg.png";
+
+const LoginContainer = styled.div`
+  background-image: url(${bg});
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 function Login() {
   const history = useNavigate();
@@ -34,7 +47,8 @@ function Login() {
   }
   
   return (
-    <div className="login-container" style={{  backgroundColor: '#FCF6F9', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <LoginContainer>
+    
       <div className="login" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <h1>Daftar</h1>
   
@@ -84,7 +98,8 @@ function Login() {
   
         <Link to="/">Halaman Login</Link>
       </div>
-    </div>
+    
+    </LoginContainer>
   );
   
   

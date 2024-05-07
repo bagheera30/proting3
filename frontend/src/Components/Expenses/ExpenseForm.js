@@ -50,7 +50,7 @@ function ExpenseForm() {
             </div>
             <div className="input-control">
                 <input value={amount}  
-                    type="text" 
+                    type="number" 
                     name={'amount'} 
                     placeholder={'Rp.'}
                     onChange={handleInput('amount')} 
