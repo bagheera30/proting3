@@ -54,11 +54,11 @@ exports.getExpenseByMonth = async (req, res) => {
 
     const expenses = await Expense.aggregate([
       {
-        $lookup: {
-          from: "accounts",
-          localField: "account",
-          foreignField: "_id",
-          as: "accountInfo",
+
+        $project: {
+          month: { $month: "$date" },
+          data: "$$ROOT",s
+
         },
       },
       {

@@ -37,12 +37,7 @@ const ExpenseSchema = new Schema({
         maxLength: 20,
         trim: true
     },
-    // Menambahkan referensi ke model Account berdasarkan username
-    account: {
-        type: Schema.Types.ObjectId,
-        ref: 'Account',
-        required: true
-    }
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('Expense', ExpenseSchema);
