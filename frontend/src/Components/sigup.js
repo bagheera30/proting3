@@ -47,8 +47,9 @@ function Login() {
   }
   
   return (
+
     <LoginContainer>
-    
+
       <div className="login" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <h1>Daftar</h1>
   
@@ -98,8 +99,10 @@ function Login() {
   
         <Link to="/">Halaman Login</Link>
       </div>
+
     
     </LoginContainer>
+
   );
   
   
