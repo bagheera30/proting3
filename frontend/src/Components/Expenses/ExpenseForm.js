@@ -59,7 +59,7 @@ function ExpenseForm() {
             <div className="input-control">
                 <DatePicker 
                     id='date'
-                    placeholderText='Enter A Date'
+                    placeholderText='Tanggal'
                     selected={date}
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => {
@@ -69,7 +69,7 @@ function ExpenseForm() {
             </div>
             <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
-                    <option value="" disabled >Select Option</option>
+                    <option value="" disabled >Pilih kategori</option>
                     <option value="education">Education</option>
                     <option value="groceries">Groceries</option>
                     <option value="health">Health</option>

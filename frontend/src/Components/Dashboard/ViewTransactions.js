@@ -40,19 +40,19 @@ function ViewTransactions() {
           <div className="income">
             <h2>Total Pemasukan</h2>
             <p>
-              {dollar} {totalIncome()}
+              Rp. {totalIncome()}
             </p>
           </div>
           <div className="expense">
             <h2>Total Pengeluaran</h2>
             <p>
-              {dollar} {totalExpenses()}
+              Rp. {totalExpenses()}
             </p>
           </div>
           <div className="balance">
             <h2>Total</h2>
             <p>
-              {dollar} {totalBalance()}
+              Rp. {totalBalance()}
             </p>
           </div>
         </div>

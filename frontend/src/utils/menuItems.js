@@ -1,4 +1,4 @@
-import { dashboard, expenses, transactions, trend } from "../utils/Icons";
+import { dashboard, expenses, table, transactions, trend } from "../utils/Icons";
 
 export const menuItems = [
   {
@@ -7,11 +7,12 @@ export const menuItems = [
     icon: dashboard,
     link: "/dashboard",
   },
+
   {
-    id: 2,
-    title: "View Transactions",
-    icon: transactions,
-    link: "/dashboard",
+    id: 5,
+    title: "Laporan Tabel",
+    icon: table,
+    link: "/TableData",
   },
   {
     id: 3,

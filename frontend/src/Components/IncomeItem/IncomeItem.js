@@ -93,7 +93,7 @@ function IncomeItem({
         <div className="inner-content">
           <div className="text">
             <p>
-              {dollar} {amount}
+              Rp. {amount}
             </p>
             <p>
               {calender} {dateFormat(date)}
