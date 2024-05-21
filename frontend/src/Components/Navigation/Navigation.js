@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import avatar from "../../img/avatar.png";
 import { signout } from "../../utils/Icons";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { menuItems } from "../../utils/menuItems";
 
 function Navigation({ active, setActive }) {
@@ -32,7 +32,7 @@ function Navigation({ active, setActive }) {
         })}
       </ul>
       <div className="bottom-nav">
-        <li>{signout} Sign Out</li>
+        <Link to='/'>{signout} Sign Out</Link>
       </div>
     </NavStyled>
   );

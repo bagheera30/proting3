@@ -15,8 +15,8 @@ function Expenses() {
     return (
         <ExpenseStyled>
             <InnerLayout>
-                <h1>Expenses</h1>
-                <h2 className="total-income">Total Expense: <span>${totalExpenses()}</span></h2>
+                <h1>Pengeluaran</h1>
+                <h2 className="total-income">Total Pengeluaran: <span>${totalExpenses()}</span></h2>
                 <div className="income-content">
                     <div className="form-container">
                         <ExpenseForm />

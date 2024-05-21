@@ -7,6 +7,7 @@ import Navigation from "./Navigation/Navigation";
 import Dashboard from "./Dashboard/Dashboard";
 import Income from "./Income/Income";
 import Expenses from "./Expenses/Expenses";
+import TableData from "./Table/TableData";
 import { useGlobalContext } from "../context/globalContext";
 
 function Home() {
@@ -25,6 +26,8 @@ function Home() {
         return <Income />;
       case 4:
         return <Expenses />;
+      case 5:
+        return <TableData />;
       default:
         return <Dashboard />;
     }

@@ -17,7 +17,7 @@ function Dashboard() {
     return (
         <DashboardStyled>
             <InnerLayout>
-                <h1>All Transactions</h1>
+                <h1>Semua Transaksi</h1>
                 <div className="stats-con">
                     <div className="chart-con">
                         <Chart />
@@ -25,26 +25,26 @@ function Dashboard() {
                             <div className="income">
                                 <h2>Total Pemasukan</h2>
                                 <p>
-                                    {dollar} {totalIncome()}
+                                    Rp. {totalIncome()}
                                 </p>
                             </div>
                             <div className="expense">
                                 <h2>Total Pengeluaran</h2>
                                 <p>
-                                    {dollar} {totalExpenses()}
+                                    Rp. {totalExpenses()}
                                 </p>
                             </div>
                             <div className="balance">
                                 <h2>Total</h2>
                                 <p>
-                                    {dollar} {totalBalance()}
+                                    Rp.{totalBalance()}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="history-con">
                         <History />
-                        <h2 className="salary-title">Min <span>pendapatan</span>Max</h2>
+                        <h2 className="salary-title">Min <span>Pendapatan</span>Max</h2>
                         <div className="salary-item">
                             <p>
                                 ${Math.min(...incomes.map(item => item.amount))}

@@ -30,13 +30,23 @@ export const GlobalProvider = ({ children }) => {
     const res = await axios.delete(`${BASE_URL}delete-income/${id}`);
     getIncomes();
   };
+  const formatCurrency = (amount) => {
+    const formattedAmount = amount.toLocaleString('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0,
+    });
+
+    // Menambahkan simbol mata uang secara manual
+    return `Rp${formattedAmount}`;
+};
 
   const totalIncome = () => {
     let totalIncome = 0;
     incomes.forEach((income) => {
       totalIncome = totalIncome + income.amount;
     });
-
+  
     return totalIncome;
   };
 
