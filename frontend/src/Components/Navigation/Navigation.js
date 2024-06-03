@@ -1,19 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import avatar from "../../img/avatar.png";
 import { signout } from "../../utils/Icons";
 import { Link, useLocation } from "react-router-dom";
 import { menuItems } from "../../utils/menuItems";
+import { doc, getDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
+import { auth, db } from "../../config/firebase";
 
 function Navigation({ active, setActive }) {
-  const location = useLocation();
+  // const location = useLocation();
+  const [userId, setUserId] = useState("");
+  const [username, setUsername] = useState("");
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      localStorage.clear();
+      // Lakukan tindakan setelah berhasil sign out, seperti menghapus data dari local storage atau mengarahkan pengguna ke halaman login
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+
+  useEffect(() => {
+    const userIdFromLocalStorage = localStorage.getItem("userId");
+    setUserId(userIdFromLocalStorage);
+    const fetchData = async () => {
+      if (userIdFromLocalStorage) {
+        const dbRef = doc(db, "users", userIdFromLocalStorage);
+        try {
+          const docSnap = await getDoc(dbRef);
+          if (docSnap.exists()) {
+            const userData = docSnap.data();
+            setUsername(userData.name);
+          } else {
+            console.log("No such document!");
+          }
+        } catch (error) {
+          console.error("Error getting document:", error);
+        }
+      }
+    };
+    fetchData();
+  }, [userId]);
+  const dbRef = userId ? doc(db, "users", userId) : null;
 
   return (
     <NavStyled>
       <div className="user-con">
         <img src={avatar} alt="" />
         <div className="text">
-          <h2>{location.state.id}</h2>
+          <h2>{username}</h2>
           <p>Engineer</p>
         </div>
       </div>
@@ -32,7 +69,9 @@ function Navigation({ active, setActive }) {
         })}
       </ul>
       <div className="bottom-nav">
-        <Link to='/'>{signout} Sign Out</Link>
+        <Link to="/" onClick={handleSignOut}>
+          {signout} Sign Out
+        </Link>
       </div>
     </NavStyled>
   );
