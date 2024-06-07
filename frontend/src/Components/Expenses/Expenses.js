@@ -18,7 +18,7 @@ function Expenses() {
       <InnerLayout>
         <h1>Pengeluaran</h1>
         <h2 className="total-income">
-          Total Pengeluaran: <span>Rp. {totalExpenses()}</span>
+          Total Pengeluaran: <span>${totalExpenses()}</span>
         </h2>
         <div className="income-content">
           <div className="form-container">
@@ -26,8 +26,16 @@ function Expenses() {
           </div>
           <div className="incomes">
             {expenses.map((income) => {
-              const { _id, amount, timestamp, category, type } = income;
-              console.log(timestamp);
+              const {
+                _id,
+
+                amount,
+                timestamp,
+                category,
+
+                type,
+              } = income;
+              console.log(income);
               return (
                 <IncomeItem
                   key={_id}
@@ -37,7 +45,6 @@ function Expenses() {
                   type={type}
                   category={category}
                   indicatorColor="var(--color-green)"
-                  deleteItem={deleteExpense}
                 />
               );
             })}

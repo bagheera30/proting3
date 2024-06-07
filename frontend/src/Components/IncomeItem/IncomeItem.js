@@ -24,15 +24,7 @@ import {
 } from "../../utils/Icons";
 import Button from "../Button/Button";
 
-function IncomeItem({
-  id,
-  amount,
-  timestamp,
-  category,
-  deleteItem,
-  indicatorColor,
-  type,
-}) {
+function IncomeItem({ id, amount, timestamp, category, indicatorColor, type }) {
   const categoryIcon = () => {
     switch (category) {
       case "salary":
@@ -91,18 +83,6 @@ function IncomeItem({
             <p>
               {calender} {timestamp}
             </p>
-          </div>
-          <div className="btn-con">
-            <Button
-              icon={trash}
-              bPad={"1rem"}
-              bRad={"50%"}
-              bg={"var(--primary-color"}
-              color={"#fff"}
-              iColor={"#fff"}
-              hColor={"var(--color-green)"}
-              onClick={() => deleteItem(id)}
-            />
           </div>
         </div>
       </div>

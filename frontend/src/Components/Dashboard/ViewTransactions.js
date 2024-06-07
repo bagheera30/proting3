@@ -16,8 +16,7 @@ function ViewTransactions() {
     totalBalance,
     getIncomesByMonth,
     getExpensesByMonth,
-    deleteIncome,
-    deleteExpenses,
+
   } = useGlobalContext();
 
   const [selectedMonth, setSelectedMonth] = useState("");
@@ -79,7 +78,6 @@ function ViewTransactions() {
                   type={type}
                   category={category}
                   indicatorColor="var(--color-green)"
-                  deleteItem={deleteIncome}
                 />
               );
             })}
@@ -99,7 +97,6 @@ function ViewTransactions() {
                   type={type}
                   category={category}
                   indicatorColor="var(--color-red)"
-                  deleteItem={deleteExpenses}
                 />
               );
             })}

@@ -83,17 +83,6 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const deleteIncome = async (currentUser, id) => {
-    try {
-      const incomeDocRef = doc(db, "transaksi", currentUser.uid, "income", id);
-      await deleteDoc(incomeDocRef);
-      console.log("Income document with ID: ", id, " deleted successfully");
-      getIncomes(currentUser);
-    } catch (error) {
-      console.error("Error deleting income document: ", error);
-    }
-  };
-
   const formatCurrency = (amount) => {
     const formattedAmount = amount.toLocaleString("id-ID", {
       style: "currency",
@@ -170,22 +159,6 @@ export const GlobalProvider = ({ children }) => {
       console.error("Error getting income documents: ", error);
     }
   };
-  const deleteExpense = async (currentUser, id) => {
-    try {
-      const expenseDocRef = doc(
-        db,
-        "transaksi",
-        currentUser.uid,
-        "expense",
-        id
-      );
-      await deleteDoc(expenseDocRef);
-      console.log("Expense document with ID: ", id, " deleted successfully");
-      getExpenses(currentUser);
-    } catch (error) {
-      console.error("Error deleting expense document: ", error);
-    }
-  };
 
   const totalExpenses = () => {
     let totalExpenses = 0;
@@ -216,12 +189,12 @@ export const GlobalProvider = ({ children }) => {
         addIncome,
         getIncomes,
         incomes,
-        deleteIncome,
+
         expenses,
         totalIncome,
         addExpense,
         getExpenses,
-        deleteExpense,
+
         totalExpenses,
         totalBalance,
         transactionHistory,
