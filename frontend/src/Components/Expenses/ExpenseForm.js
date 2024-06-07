@@ -10,23 +10,24 @@ function ExpenseForm() {
   const { addExpense, error, setError } = useGlobalContext();
   const [inputState, setInputState] = useState({
     amount: "",
-    date: "",
+    timestamp: "",
     category: "",
   });
 
-  const { amount, date, category } = inputState;
+  const { amount, timestamp, category } = inputState;
 
   const handleInput = (name) => (e) => {
     setInputState({ ...inputState, [name]: e.target.value });
     setError("");
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
     addExpense(inputState);
+    console.log(inputState);
     setInputState({
       amount: "",
-      date: "",
+      timestamp: "",
       category: "",
     });
   };
@@ -48,10 +49,10 @@ function ExpenseForm() {
         <DatePicker
           id="date"
           placeholderText="Tanggal"
-          selected={date}
+          selected={timestamp}
           dateFormat="dd/MM/yyyy"
           onChange={(date) => {
-            setInputState({ ...inputState, date: date });
+            setInputState({ ...inputState, timestamp: date });
           }}
         />
       </div>

@@ -39,21 +39,15 @@ function ViewTransactions() {
         <div className="amount-con">
           <div className="income">
             <h2>Total Pemasukan</h2>
-            <p>
-              Rp. {totalIncome()}
-            </p>
+            <p>Rp. {totalIncome()}</p>
           </div>
           <div className="expense">
             <h2>Total Pengeluaran</h2>
-            <p>
-              Rp. {totalExpenses()}
-            </p>
+            <p>Rp. {totalExpenses()}</p>
           </div>
           <div className="balance">
             <h2>Total</h2>
-            <p>
-              Rp. {totalBalance()}
-            </p>
+            <p>Rp. {totalBalance()}</p>
           </div>
         </div>
         <div className="data">
@@ -75,14 +69,11 @@ function ViewTransactions() {
               <option value="December">December</option>
             </select>
             {incomes.map((income) => {
-              const { _id, title, amount, date, category, description, type } =
-                income;
+              const { _id, amount, date, category, type } = income;
               return (
                 <IncomeItem
                   key={_id}
                   id={_id}
-                  title={title}
-                  description={description}
                   amount={amount}
                   date={date}
                   type={type}
@@ -96,8 +87,7 @@ function ViewTransactions() {
           <div className="expend">
             <h2>Expend List</h2>
             {expenses.map((expense) => {
-              const { _id, title, amount, date, category, description, type } =
-                expense;
+              const { _id, amount, date, category, type } = expense;
               return (
                 <IncomeItem
                   key={_id}

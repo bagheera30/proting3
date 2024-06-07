@@ -5,8 +5,7 @@ import {
   collection,
   addDoc,
   getDocs,
-  setDoc,
-  serverTimestamp,
+  Timestamp,
 } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 // Impor konfigurasi Firebase Firestore
@@ -27,24 +26,30 @@ export const GlobalProvider = ({ children }) => {
   //calculate incomes
 
   const addIncome = async (income) => {
-    const { am, category } = income;
-
+    const { amount, category, timestamp } = income;
     try {
-      const incomeCollectionRef = doc(db, "transaksi", userId, "income");
+      const expenseCollectionRef = collection(
+        doc(db, "transaksi", userId),
+        "income"
+      );
 
-      await setDoc(incomeCollectionRef, {
+      const parsedTimestamp = Timestamp.fromMillis(
+        new Date(timestamp).getTime()
+      );
+
+      await addDoc(expenseCollectionRef, {
         uid: userId,
         list: 1,
-        amount: parseInt(am),
+        amount: parseInt(amount),
         category: category,
-        timestamp: serverTimestamp(),
+        timestamp: parsedTimestamp,
       });
 
-      console.log("Data successfully added to the 'income' collection.");
-      getIncomes(); // Call the getIncomes() function after adding data
+      console.log("Data berhasil ditambahkan ke koleksi 'expenses'.");
+      getExpenses(); // Panggil fungsi getExpenses() setelah menambahkan data
     } catch (error) {
       console.error("Error adding document: ", error);
-      setError(error.message); // Set error message if an error occurs
+      setError(error.message); // Atur pesan kesalahan jika terjadi kesalahan
     }
   };
   const getIncomes = async () => {
@@ -58,8 +63,14 @@ export const GlobalProvider = ({ children }) => {
 
       if (!querySnapshot.empty) {
         querySnapshot.forEach((doc) => {
-          console.log("income: ", doc.id, " => ", doc.data());
-          incomes.push(doc.data());
+          const data = doc.data();
+          const timestamp = data.timestamp;
+          const date = new Date(timestamp.seconds * 1000);
+          const formattedDate = date.toLocaleDateString("en-GB"); // Ubah sesuai preferensi format tanggal Anda
+          const newData = { ...data, timestamp: formattedDate };
+
+          console.log(doc.id, " => ", newData);
+          incomes.push(newData);
         });
       } else {
         console.log("No income documents found.");
@@ -105,7 +116,7 @@ export const GlobalProvider = ({ children }) => {
 
   //calculate incomes
   const addExpense = async (expense) => {
-    const { am, category, timestamp } = expense;
+    const { amount, category, timestamp } = expense;
 
     try {
       const expenseCollectionRef = collection(
@@ -113,12 +124,14 @@ export const GlobalProvider = ({ children }) => {
         "expends"
       );
 
-      const parsedTimestamp = new Date(timestamp).getTime();
+      const parsedTimestamp = Timestamp.fromMillis(
+        new Date(timestamp).getTime()
+      );
 
       await addDoc(expenseCollectionRef, {
         uid: userId,
         list: -1,
-        amount: parseInt(am),
+        amount: parseInt(amount),
         category: category,
         timestamp: parsedTimestamp,
       });

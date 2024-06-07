@@ -26,11 +26,9 @@ import Button from "../Button/Button";
 
 function IncomeItem({
   id,
-  title,
   amount,
-  date,
+  timestamp,
   category,
-  description,
   deleteItem,
   indicatorColor,
   type,
@@ -81,26 +79,17 @@ function IncomeItem({
     }
   };
 
-  console.log("type", type);
-
   return (
     <IncomeItemStyled indicator={indicatorColor}>
       <div className="icon">
         {type === "expense" ? expenseCatIcon() : categoryIcon()}
       </div>
       <div className="content">
-        <h5>{title}</h5>
         <div className="inner-content">
           <div className="text">
+            <p>Rp. {amount}</p>
             <p>
-              Rp. {amount}
-            </p>
-            <p>
-              {calender} {dateFormat(date)}
-            </p>
-            <p>
-              {comment}
-              {description}
+              {calender} {timestamp}
             </p>
           </div>
           <div className="btn-con">
